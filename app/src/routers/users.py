@@ -5,16 +5,16 @@ from sqlalchemy.orm import Session
 from ..dependencies import get_db
 from ..domain.user import schema, services
 
-router = APIRouter(tags=["users"])
+router = APIRouter(prefix='/users', tags=["users"])
 
 
-@router.get('/users/', response_model=List[schema.User])
+@router.get('/', response_model=List[schema.User])
 def get_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     users = services.get_users(db, skip, limit)
     return users
 
 
-@router.get('/users/{user_id}', response_model=schema.User)
+@router.get('/{user_id}', response_model=schema.User)
 def get_user(user_id: int, db: Session = Depends(get_db)):
     user = services.get_user(db, user_id)
     if user is None:
@@ -22,7 +22,7 @@ def get_user(user_id: int, db: Session = Depends(get_db)):
     return user
 
 
-@router.post('/users/', response_model=schema.User)
+@router.post('/', response_model=schema.User)
 def create_users(user: schema.UserCreate, db: Session = Depends(get_db)):
     db_user = services.get_user_by_email(db, user.email)
     if db_user:

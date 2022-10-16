@@ -10,6 +10,7 @@ def get_application():
     application = FastAPI()
 
     Base.metadata.create_all(bind=engine)
+
     application.include_router(router_api, prefix=API_PREFIX)
 
     application.add_middleware(

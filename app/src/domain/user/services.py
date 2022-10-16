@@ -2,10 +2,10 @@ from statistics import mode
 from sqlalchemy.orm import Session
 from . import models, schema
 
-DEFAULT_LIMIT_PER_PAGE = 10
+DEFAULT_LIMIT_USER = 10
 
 
-def get_users(db: Session, skip: int = 0, limit: int = DEFAULT_LIMIT_PER_PAGE):
+def get_users(db: Session, skip: int = 0, limit: int = DEFAULT_LIMIT_USER):
     return db.query(models.User).offset(skip).limit(limit).all()
 
 
