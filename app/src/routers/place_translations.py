@@ -10,6 +10,11 @@ router = APIRouter(prefix='/place_translations', tags=['place_translations'])
 
 
 @router.get('/', response_model=List[schema.PlaceTranslation])
-def get_place_translations(db: Session = Depends(get_db)):
-    place_translations = services.get_place_translation(db)
+def get_place_translations(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    place_translations = services.get_place_translations(db, skip, limit)
     return place_translations
+
+
+@router.get('/{id}', response_model=schema.PlaceTranslation)
+def get_place_translation(id: int, db: Session = Depends(get_db)):
+    return services.get_place_translation(db, id)

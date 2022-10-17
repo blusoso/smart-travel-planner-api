@@ -13,3 +13,9 @@ router = APIRouter(prefix='/places', tags=['places'])
 def get_places(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     places = services.get_places(db, skip, limit)
     return places
+
+
+@router.get('/{place_id}', response_model=schema.Place)
+def get_place(place_id: str, db: Session = Depends(get_db)):
+    place = services.get_place(db, place_id)
+    return place
