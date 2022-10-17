@@ -28,3 +28,4 @@ class Place(Base):
     place_translations = relationship(
         'PlaceTranslation', back_populates='place'
     )
+    place_locations = relationship('PlaceLocation', back_populates='places')
