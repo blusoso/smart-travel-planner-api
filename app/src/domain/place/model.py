@@ -25,3 +25,6 @@ class Place(Base):
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
 
     country = relationship('Country', back_populates='places')
+    place_translations = relationship(
+        'PlaceTranslation', back_populates='place'
+    )

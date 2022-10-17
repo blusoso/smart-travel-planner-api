@@ -1,4 +1,3 @@
-from unittest.mock import DEFAULT
 from sqlalchemy.orm import Session
 from . import model, schema
 
