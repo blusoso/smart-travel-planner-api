@@ -1,16 +1,17 @@
 from typing import List
 from pydantic import BaseModel
+
 from ..place.schema import Place
+from ..day.schema import Day
+from ..time_periods.schema import TimePeriods
 
 
 class PlaceOpeningPeriod(BaseModel):
     id: int
     place: Place
-    intro: str | None = None
-    description: str | None = None
-    activities: List[str] | None = None
-    facilities: List[str] | None = None
-    how_to_travel: str | None = None
+    day: Day
+    open: TimePeriods
+    close: TimePeriods
 
     class Config:
         orm_mode = True
