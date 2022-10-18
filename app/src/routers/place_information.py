@@ -10,6 +10,6 @@ router = APIRouter(prefix='/place_information', tags=['place_information'])
 
 
 @router.get('/', response_model=List[schema.PlaceInformation])
-def get_place_information(db: Session = Depends(get_db)):
-    place_information = services.get_place_information(db)
+def get_place_information(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    place_information = services.get_place_information(db, skip, limit)
     return place_information

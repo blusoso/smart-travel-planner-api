@@ -10,6 +10,6 @@ router = APIRouter(prefix='/place_imgs', tags=['place_imgs'])
 
 
 @router.get('/', response_model=List[schema.PlaceImg])
-def get_place_imgs(db: Session = Depends(get_db)):
-    place_imgs = services.get_place_imgs(db)
+def get_place_imgs(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    place_imgs = services.get_place_imgs(db, skip, limit)
     return place_imgs

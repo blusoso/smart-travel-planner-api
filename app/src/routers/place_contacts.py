@@ -10,6 +10,6 @@ router = APIRouter(prefix='/place_contacts', tags=['place_contacts'])
 
 
 @router.get('/', response_model=List[schema.PlaceContact])
-def get_place_contacts(db: Session = Depends(get_db)):
-    place_contacts = services.get_place_contacts(db)
+def get_place_contacts(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    place_contacts = services.get_place_contacts(db, skip, limit)
     return place_contacts

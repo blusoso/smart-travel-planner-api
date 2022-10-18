@@ -10,6 +10,6 @@ router = APIRouter(prefix='/place_fees', tags=['place_fees'])
 
 
 @router.get('/', response_model=List[schema.PlaceFee])
-def get_place_fees(db: Session = Depends(get_db)):
-    place_fees = services.get_place_fees(db)
+def get_place_fees(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    place_fees = services.get_place_fees(db, skip, limit)
     return place_fees
