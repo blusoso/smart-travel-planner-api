@@ -26,6 +26,12 @@ class Place(Base):
 
     country = relationship('Country', back_populates='places')
     place_translations = relationship(
-        'PlaceTranslation', back_populates='place'
-    )
-    place_locations = relationship('PlaceLocation', back_populates='places')
+        'PlaceTranslation', back_populates='place')
+    place_locations = relationship('PlaceLocation', back_populates='place')
+    place_contacts = relationship('PlaceContact', back_populates='place')
+    place_imgs = relationship('PlaceImg', back_populates='place')
+    place_fees = relationship('PlaceFee', back_populates='place')
+    place_information = relationship(
+        'PlaceInformation', back_populates='place')
+    place_opening_periods = relationship(
+        'PlaceOpeningPeriod', back_populates='place')

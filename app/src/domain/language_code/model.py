@@ -20,3 +20,6 @@ class LanguageCode(Base):
     place_locations = relationship(
         'PlaceLocation', back_populates='language_code'
     )
+    place_information = relationship(
+        'PlaceInformation', back_populates='language_code'
+    )

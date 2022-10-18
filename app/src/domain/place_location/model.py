@@ -20,7 +20,7 @@ class PlaceLocation(Base):
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
 
-    place = relationship('Place', back_populates='place_translations')
+    place = relationship('Place', back_populates='place_locations')
     language_code = relationship(
         'LanguageCode', back_populates='place_locations'
     )
