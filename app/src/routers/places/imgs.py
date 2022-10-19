@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 
 
 from ...dependencies import get_db
-from ...domain.place_img import schema, services
+from ...domain.places.img import schema, services
 
 router = APIRouter(prefix='/imgs', tags=['place_imgs'])
 

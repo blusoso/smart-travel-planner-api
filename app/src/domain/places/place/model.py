@@ -3,7 +3,7 @@ from sqlalchemy import Column, String, Float, DateTime, Boolean, Integer, Foreig
 from sqlalchemy.dialects.postgresql import ARRAY
 from sqlalchemy.sql import func
 from sqlalchemy.orm import relationship
-from ...database import Base
+from ....database import Base
 
 
 class CATEGORY_TYPE(enum.Enum):

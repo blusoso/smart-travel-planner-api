@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from typing import List
-from ..country.schema import Country
+from ...country.schema import Country
 
 
 class Place(BaseModel):

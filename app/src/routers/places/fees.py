@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 
 
 from ...dependencies import get_db
-from ...domain.place_fee import schema, services
+from ...domain.places.fee import schema, services
 
 router = APIRouter(prefix='/fees', tags=['place_fees'])
 

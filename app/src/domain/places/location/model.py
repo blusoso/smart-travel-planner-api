@@ -2,7 +2,7 @@ from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
 from sqlalchemy.sql import func
 from sqlalchemy.orm import relationship
 
-from ...database import Base
+from ....database import Base
 
 
 class PlaceLocation(Base):

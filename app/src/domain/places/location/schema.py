@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from ..place.schema import Place
-from ..language_code.schema import LanguageCode
+from ...language_code.schema import LanguageCode
 
 
 class PlaceLocation(BaseModel):
