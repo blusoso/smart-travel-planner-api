@@ -1,10 +1,10 @@
 from pydantic import BaseModel
+from ..language_code.schema import LanguageCode
 
 
 class CountryBase(BaseModel):
-    name_th: str
-    name_en: str
-    language_code: str
+    name: str
+    language_code: LanguageCode
     flag_img: str | None = None
 
 

@@ -1,6 +1,4 @@
-from typing import List
 from pydantic import BaseModel
-from ..place.schema import Place
 
 
 class Day(BaseModel):

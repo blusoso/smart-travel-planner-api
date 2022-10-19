@@ -11,6 +11,7 @@ class LanguageCode(Base):
     language_en = Column(String)
     language_native = Column(String)
 
+    country = relationship('Country', back_populates='language_code')
     place_translations = relationship(
         'PlaceTranslation', back_populates='language_code'
     )
