@@ -13,3 +13,11 @@ router = APIRouter(prefix='/information', tags=['place_information'])
 def get_place_information(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     place_information = services.get_place_information(db, skip, limit)
     return place_information
+
+
+@router.get('/{lang_code}/{place_id}')
+def get_place_information_detail(lang_code: str, place_id: str, db: Session = Depends(get_db)):
+    place_information_detail = services.get_place_information_detail(
+        db, lang_code, place_id
+    )
+    return place_information_detail

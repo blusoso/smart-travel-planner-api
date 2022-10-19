@@ -27,7 +27,7 @@ def get_place_card(
     return place
 
 
-@ router.get('/{place_id}', response_model=schema.Place)
+@router.get('/{place_id}', response_model=schema.Place)
 def get_place(place_id: str, db: Session = Depends(get_db)):
     place = services.get_place(db, place_id)
     return place
