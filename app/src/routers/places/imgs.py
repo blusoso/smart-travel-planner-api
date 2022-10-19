@@ -3,10 +3,10 @@ from typing import List
 from sqlalchemy.orm import Session
 
 
-from ..dependencies import get_db
-from ..domain.place_img import schema, services
+from ...dependencies import get_db
+from ...domain.place_img import schema, services
 
-router = APIRouter(prefix='/place_imgs', tags=['place_imgs'])
+router = APIRouter(prefix='/imgs', tags=['place_imgs'])
 
 
 @router.get('/', response_model=List[schema.PlaceImg])

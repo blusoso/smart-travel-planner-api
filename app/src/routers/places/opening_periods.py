@@ -3,10 +3,10 @@ from typing import List
 from sqlalchemy.orm import Session
 
 
-from ..dependencies import get_db
-from ..domain.place_opening_periods import schema, services
+from ...dependencies import get_db
+from ...domain.place_opening_periods import schema, services
 
-router = APIRouter(prefix='/place_opening_periods',
+router = APIRouter(prefix='/opening_periods',
                    tags=['place_opening_periods'])
 
 

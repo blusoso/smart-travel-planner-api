@@ -3,10 +3,10 @@ from typing import List
 from sqlalchemy.orm import Session
 
 
-from ..dependencies import get_db
-from ..domain.place_fee import schema, services
+from ...dependencies import get_db
+from ...domain.place_fee import schema, services
 
-router = APIRouter(prefix='/place_fees', tags=['place_fees'])
+router = APIRouter(prefix='/fees', tags=['place_fees'])
 
 
 @router.get('/', response_model=List[schema.PlaceFee])
