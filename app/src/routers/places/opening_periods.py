@@ -14,3 +14,9 @@ router = APIRouter(prefix='/opening_periods',
 def get_place_opening_periods(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     place_opening_periods = services.get_place_opening_periods(db, skip, limit)
     return place_opening_periods
+
+
+@router.get('/{place_id}', response_model=List[schema.SinglePlaceOpeningPeriod])
+def get_place_opening_periods(place_id: str, db: Session = Depends(get_db)):
+    place_opening_period = services.get_place_opening_period(db, place_id)
+    return place_opening_period
