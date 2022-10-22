@@ -1,17 +1,39 @@
 from pydantic import BaseModel
+from datetime import datetime
 
 
 class UserBase(BaseModel):
-    email: str
+    username: str
+    email: str | None = None
+    first_name: str | None = None
+    last_name: str | None = None
 
 
 class UserCreate(UserBase):
-    password: str
+    password_hash: str
+
+    class Config:
+        orm_mode = True
 
 
-class User(UserBase):
+class UserJWT(UserBase):
     id: int
-    is_active: bool
+    is_active: bool = True
+
+    class Config:
+        orm_mode = True
+
+
+class User(UserJWT):
+    created_at: datetime
+
+    class Config:
+        orm_mode = True
+
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
 
     class Config:
         orm_mode = True
