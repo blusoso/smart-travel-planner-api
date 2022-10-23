@@ -4,6 +4,7 @@ from sqlalchemy import func
 
 from ..places.place.model import Place
 from ..places.translation.model import PlaceTranslation
+from ..places.location.model import PlaceLocation
 from ..country.model import Country
 
 DEFAULT_LIMIT_PLACE = 100
@@ -16,10 +17,12 @@ def search_places_by_keyword(db: Session, keyword: str, skip: int = 0, limit: in
         Place,
         PlaceTranslation.name,
         Country.name.label('country_name'),
+        PlaceLocation
     )\
         .join(PlaceTranslation)\
         .join(Country)\
-        .filter(PlaceTranslation.name.contains(keyword))\
+        .join(PlaceLocation)\
+        .filter(func.lower(PlaceTranslation.name).contains(keyword))\
         .offset(skip)\
         .limit(limit)\
         .all()
