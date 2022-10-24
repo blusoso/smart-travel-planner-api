@@ -18,6 +18,9 @@ class LanguageCode(Base):
     attraction_types = relationship(
         'AttractionType', back_populates='language_code'
     )
+    tourism_types = relationship(
+        'TourismType', back_populates='language_code'
+    )
     place_locations = relationship(
         'PlaceLocation', back_populates='language_code'
     )
