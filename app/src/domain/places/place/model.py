@@ -29,3 +29,5 @@ class Place(Base):
         'PlaceInformation', back_populates='place')
     place_opening_periods = relationship(
         'PlaceOpeningPeriod', back_populates='place')
+    place_attraction_types = relationship(
+        'PlaceAttractionType', back_populates='place')
