@@ -1,6 +1,13 @@
+import enum
 from pydantic import BaseModel
 from typing import List
 from ...country.schema import Country
+
+
+class CategoryType(str, enum.Enum):
+    ATTRACTION = 'attraction'
+    RESTAURANT = 'restaurant'
+    SHOP = 'shop'
 
 
 class Place(BaseModel):
@@ -9,6 +16,7 @@ class Place(BaseModel):
     longitude: float
     tags: List[str] | None = None
     country: Country
+    category_type: CategoryType = CategoryType.ATTRACTION
     is_active: bool
 
     class Config:
