@@ -14,6 +14,9 @@ class TourismType(Base):
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
 
+    attraction_types = relationship(
+        'AttractionType', back_populates='tourism_type'
+    )
     language_code = relationship(
-        'LanguageCode', back_populates='attraction_types'
+        'LanguageCode', back_populates='tourism_types'
     )

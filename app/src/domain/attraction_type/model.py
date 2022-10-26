@@ -10,7 +10,8 @@ class AttractionType(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String)
-    tourism_type_id = Column(Integer, ForeignKey('tourism_types'))
+    tourism_type_id = Column(Integer, ForeignKey(
+        'tourism_types.id'), nullable=True)
     language_code_id = Column(String(3), ForeignKey(
         'language_codes.id'), nullable=True
     )
