@@ -1,14 +1,10 @@
-from fastapi.responses import HTMLResponse
 from sqlalchemy.orm import Session
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
-from pythainlp.corpus import thai_stopwords
 import pandas as pd
 
 from ..places.information.model import PlaceInformation
 from ..places.place.services import get_place_with_fee
-
-STOP_WORDS = list(thai_stopwords())
 
 
 def find_cosine_similarity(bag_of_words):

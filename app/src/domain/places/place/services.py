@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from . import model, schema
+from . import model
 from ..fee.model import PlaceFee
 from ..translation.model import PlaceTranslation
 from ...country.model import Country

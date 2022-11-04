@@ -21,3 +21,8 @@ def get_place_information_detail(lang_code: str, place_id: str, db: Session = De
         db, lang_code, place_id
     )
     return place_information_detail
+
+
+@router.post('/')
+def create_place_information(place_information: schema.PlaceInformationCreate, db: Session = Depends(get_db)):
+    return services.create_place_information(place_information, db)
