@@ -11,7 +11,7 @@ class PlaceInformation(BaseModel):
     activities: List[str] | None = None
     facilities: List[str] | None = None
     how_to_travel: str | None = None
-    combined_text: str | None = None
+    bag_of_words: List[str] | None = None
 
     class Config:
         orm_mode = True

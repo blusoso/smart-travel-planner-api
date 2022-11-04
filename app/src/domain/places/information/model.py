@@ -16,7 +16,7 @@ class PlaceInformation(Base):
     activities = Column(ARRAY(String), nullable=True)
     facilities = Column(ARRAY(String), nullable=True)
     how_to_travel = Column(Text, nullable=True)
-    combined_text = Column(Text, nullable=True)
+    bag_of_words = Column(ARRAY(String), nullable=True)
     language_code_id = Column(String(3), ForeignKey('language_codes.id'))
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
