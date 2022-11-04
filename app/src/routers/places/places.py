@@ -16,14 +16,24 @@ def get_places(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return places
 
 
-@router.get('/{lang_code}/card', response_model=List[schema.PlaceCard])
+@router.get('/{lang_code}/listing', response_model=List[schema.PlaceCard])
 def get_place_card(
         lang_code: str = 'th',
         skip: int = 0,
         limit: int = 100,
         db: Session = Depends(get_db)
 ):
-    place = services.get_place_with_fee(db, lang_code, skip, limit)
+    place = services.get_places_with_fee(db, lang_code, skip, limit)
+    return place
+
+
+@router.get('/{lang_code}/{place_id}', response_model=schema.PlaceCard)
+def get_place_card(
+        place_id: str,
+        lang_code: str = 'th',
+        db: Session = Depends(get_db)
+):
+    place = services.get_place_with_fee(db, place_id, lang_code)
     return place
 
 

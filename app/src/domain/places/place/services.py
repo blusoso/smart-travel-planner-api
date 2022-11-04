@@ -19,7 +19,7 @@ def get_place(db: Session, place_id: str):
     return db_place
 
 
-def get_place_with_fee(db: Session, lang_code: str = 'th', skip: int = 0, limit: int = DEFAULT_LIMIT_PLACE):
+def get_places_with_fee(db: Session, lang_code: str = 'th', skip: int = 0, limit: int = DEFAULT_LIMIT_PLACE):
     db_place = db.query(
         model.Place.id,
         PlaceTranslation.name,
@@ -40,5 +40,29 @@ def get_place_with_fee(db: Session, lang_code: str = 'th', skip: int = 0, limit:
         .offset(skip)\
         .limit(limit)\
         .all()
+
+    return db_place
+
+
+def get_place_with_fee(db: Session, place_id: str, lang_code: str = 'th'):
+    db_place = db.query(
+        model.Place.id,
+        PlaceTranslation.name,
+        model.Place.tags,
+        Country.name.label('country_name'),
+        PlaceFee.child_fee,
+        PlaceFee.adult_fee,
+        PlaceFee.foreigner_child_fee,
+        PlaceFee.foreigner_adult_fee,
+        PlaceTranslation.language_code_id,
+    )\
+        .join(PlaceTranslation)\
+        .join(PlaceFee)\
+        .join(Country)\
+        .filter(model.Place.is_active == True)\
+        .filter(PlaceTranslation.language_code_id == lang_code)\
+        .filter(Country.language_code_id == lang_code)\
+        .filter(model.Place.id == place_id)\
+        .first()
 
     return db_place
