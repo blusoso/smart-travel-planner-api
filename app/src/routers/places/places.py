@@ -27,6 +27,17 @@ def get_place_card(
     return place
 
 
+@router.get('/{lang_code}/discover', response_model=List[schema.PlaceCard])
+def get_place_card(
+        lang_code: str = 'th',
+        skip: int = 0,
+        limit: int = 10,
+        db: Session = Depends(get_db)
+):
+    place = services.discover(db, lang_code, skip, limit)
+    return place
+
+
 @router.get('/{lang_code}/{place_id}', response_model=schema.PlaceCard)
 def get_place_card(
         place_id: str,

@@ -18,6 +18,7 @@ class Place(BaseModel):
     country: Country
     category_type: CategoryType = CategoryType.ATTRACTION
     is_active: bool
+    is_most_beautiful: bool
 
     class Config:
         orm_mode = True
@@ -33,3 +34,6 @@ class PlaceCard(BaseModel):
     foreigner_child_fee: float | None = 0.0
     foreigner_adult_fee: float | None = 0.0
     language_code_id: str
+
+    class Config:
+        orm_mode = True
